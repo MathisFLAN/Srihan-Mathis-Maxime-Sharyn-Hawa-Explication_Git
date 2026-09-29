@@ -155,3 +155,6 @@ git push
 ```
 
 En pratique, vérifiez l’état avec `git status` avant et après vos opérations. Cela aide à savoir quels changements sont prêts à être enregistrés ou envoyés.
+
+
+Et c'est la finnnnnn
