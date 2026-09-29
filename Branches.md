@@ -43,3 +43,10 @@ main
 Une fois la fonctionnalité terminée et testée, on peut fusionner (merge) la branche develop dans main.
 
 On peut donc travailler à plusieurs et de développer différentes fonctionnalités en parallèle, tout en gardant une branche principale stable.
+
+## Chez nous
+
+Dans notre entreprise, seul le chef du projet est autorisé a toucher a la branche main.
+
+Les développeurs doivent créet une branche a partir de develop nommé : 
+feature-nom_de_l'ajout (ex : feature-disconnect_button)
