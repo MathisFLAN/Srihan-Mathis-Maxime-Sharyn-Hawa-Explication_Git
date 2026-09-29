@@ -53,6 +53,19 @@ Vérifiez l'état du dépôt avec :
 git status
 ```
 
+### Comprendre le résultat de `git status`
+
+Cette commande ne modifie rien : elle indique sur quelle branche vous vous trouvez et compare les fichiers du dossier avec le dernier commit. Elle distingue notamment :
+
+- **Modifications à valider** (`Changes to be committed`) : les fichiers ont été préparés avec `git add` et seront inclus dans le prochain commit.
+- **Modifications non préparées** (`Changes not staged for commit`) : les fichiers suivis ont changé, mais il faut encore les ajouter avec `git add` pour inclure ces changements au prochain commit.
+- **Fichiers non suivis** (`Untracked files`) : Git a détecté de nouveaux fichiers, mais ils ne sont pas encore suivis. Utilisez `git add nom-du-fichier` pour les inclure, ou ajoutez-les à `.gitignore` s'ils ne doivent pas être versionnés.
+- **Dépôt propre** (`nothing to commit, working tree clean`) : aucun changement local n'attend d'être ajouté ou commité.
+
+Après un `git add`, relancez `git status` pour vérifier que les fichiers sont bien dans la liste des modifications à valider. Après un `git commit`, vérifiez à nouveau que le dépôt est propre.
+
+Pour une vue abrégée, utilisez `git status --short`. Les indicateurs courants sont `??` pour un fichier non suivi, ` M` pour une modification non préparée et `M ` pour une modification préparée. Dans cette sortie, la première position correspond à l'index (préparation) et la seconde aux changements dans les fichiers.
+
 ## 5. Ignorer les fichiers inutiles
 
 Avant le premier commit, créez un fichier `.gitignore` à la racine. Il indique à Git quels fichiers ne doivent pas être suivis, par exemple les fichiers temporaires, les dépendances générées ou les secrets.
@@ -79,10 +92,9 @@ Ne placez jamais de mot de passe, clé privée ou jeton d'accès dans un dépôt
 Ajoutez les fichiers que vous souhaitez suivre. Pour tout ajouter sauf les fichiers ignorés :
 
 ```bash
-git add .
+git add . 
 ```
 
-Examinez ce qui sera enregistré :
 
 ```bash
 git status
