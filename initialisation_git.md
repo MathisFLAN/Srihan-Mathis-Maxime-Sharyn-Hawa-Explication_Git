@@ -145,14 +145,74 @@ L'option `-u` associe la branche locale à la branche distante. Pour les envois 
 
 ## Cas d'un dépôt distant déjà existant
 
-Si le projet existe déjà sur GitHub ou une autre plateforme et que vous voulez en récupérer une copie, utilisez plutôt `git clone` :
+Si le projet existe déjà sur GitHub ou une autre plateforme et que vous voulez en récupérer une copie, utilisez `git clone`. Cette commande télécharge les fichiers et tout l'historique Git, puis configure automatiquement le dépôt distant `origin`. Il n'est alors pas nécessaire de lancer `git init`.
+
+### 1. Copier l'URL du dépôt
+
+Sur la page du dépôt, utilisez le bouton **Code** pour copier son URL. Les deux formats les plus courants sont HTTPS et SSH :
+
+```text
+https://github.com/nom-utilisateur/nom-du-projet.git
+git@github.com:nom-utilisateur/nom-du-projet.git
+```
+
+HTTPS peut demander une authentification lors d'une opération nécessitant un accès. SSH nécessite qu'une clé SSH soit configurée sur la plateforme. Pour un dépôt privé, votre compte doit avoir les droits d'accès.
+
+### 2. Choisir où placer la copie
+
+Dans un terminal, placez-vous dans le dossier qui contiendra le projet cloné :
+
+```bash
+cd chemin/vers/mes-projets
+```
+
+Puis lancez le clonage en remplaçant l'exemple par l'URL copiée :
 
 ```bash
 git clone https://github.com/nom-utilisateur/nom-du-projet.git
+```
+
+Git crée un nouveau dossier portant le nom du dépôt. Vous pouvez préciser un autre nom de dossier en dernier argument :
+
+```bash
+git clone https://github.com/nom-utilisateur/nom-du-projet.git mon-dossier
+```
+
+Le dossier cible doit être inexistant ou vide. Après le clonage, entrez dans le dossier créé :
+
+```bash
 cd nom-du-projet
 ```
 
-Le clonage télécharge les fichiers et l'historique, et configure automatiquement le dépôt distant `origin`. Il n'est alors pas nécessaire de lancer `git init`.
+### 3. Vérifier le dépôt cloné
+
+Vérifiez que les fichiers sont présents et que le dossier est bien un dépôt Git :
+
+```bash
+git status
+git remote -v
+git branch --show-current
+```
+
+`git status` affiche normalement un arbre de travail propre. `git remote -v` doit afficher l'adresse du dépôt sous le nom `origin`. La dernière commande indique la branche courante, souvent `main`.
+
+### 4. Travailler et récupérer les mises à jour
+
+Après avoir modifié des fichiers, consultez les changements, préparez-les et créez un commit :
+
+```bash
+git status
+git add fichier
+git commit -m "Décrire le changement"
+```
+
+Pour récupérer les nouveaux commits publiés sur la branche distante suivie par votre branche courante, utilisez :
+
+```bash
+git pull
+```
+
+Si plusieurs personnes travaillent sur le projet, récupérez les changements avant de commencer votre travail et avant d'envoyer vos commits avec `git push`. En cas de conflit, Git vous demandera de résoudre les fichiers concernés avant de pouvoir terminer la fusion.
 
 ## Commandes courantes
 
