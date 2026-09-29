@@ -25,3 +25,21 @@ git merge ma-branche
 # Supprimer une branche
 git branch -d ma-branche
 ```
+
+## Exemple
+
+On part de main, on créer une branche develop avec des features et une branche bug fix :
+
+```
+main
+ │
+ ├── develop
+ │      ├── feature-1
+ │      └── feature-2
+ │
+ └── bug-fix
+```
+
+Une fois la fonctionnalité terminée et testée, on peut fusionner (merge) la branche develop dans main.
+
+On peut donc travailler à plusieurs et de développer différentes fonctionnalités en parallèle, tout en gardant une branche principale stable.
